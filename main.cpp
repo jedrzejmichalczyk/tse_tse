@@ -29,7 +29,7 @@ int main() {
 
     auto t0= std::chrono::high_resolution_clock::now();
 
-    auto sum = 0;
+    auto sum = 0.0;
     for(int i=0; i<10000000; i++) {
 
         sum =  f(a = 3.0*i,b = 3.0 );

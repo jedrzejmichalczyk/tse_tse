@@ -2,6 +2,7 @@
 #define DERIV_H
 
 #include "symbol.h"
+#include "op.h"
 template <typename F ,typename  b>
 struct Derivative {
     typedef std::conditional_t<std::is_same_v<F,b>,One,Zero> derivType;
