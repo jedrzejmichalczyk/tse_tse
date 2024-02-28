@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
-project(feature_tests)
+project(tse_tse)
 
 set(CMAKE_CXX_STANDARD 26)
 
 
-add_executable(feature_tests main.cpp t_tut.h)
+add_executable(tse_tse main.cpp t_tut.h)
 
 
 
