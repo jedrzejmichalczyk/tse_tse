@@ -29,17 +29,17 @@ int main() {
 
     auto t0= std::chrono::high_resolution_clock::now();
 
-    std::valarray<double> sum{1};
+    auto sum = 0;
     for(int i=0; i<10000000; i++) {
-        auto binder = a = std::valarray<double>{3.0*i};
-        sum =  f(binder,b = 3.0 );
+
+        sum =  f(a = 3.0*i,b = 3.0 );
         // sum+=  f(vector<double>{3.0*i,2, 0.3},{a,b,c});
     }
 
     auto tk= std::chrono::high_resolution_clock::now();
 
     std::cout<<chrono::duration_cast<chrono::milliseconds>(tk-t0)<<endl;
-    std::cout<<sum[0]<<endl;
+    std::cout<<sum<<endl;
 
     t0= std::chrono::high_resolution_clock::now();
     double a_d =3.0;
