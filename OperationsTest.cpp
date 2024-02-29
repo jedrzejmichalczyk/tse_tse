@@ -10,11 +10,11 @@
 
 using namespace std;
 
-TEST(t_tut, binary) {
+TEST(op, binary) {
     std::cout<<binary<101010>::value<<endl;
 }
 
-TEST(t_tut, sin_formula) {
+TEST(op, sin_formula) {
     symbol a;
     symbol b;
     symbol c;
@@ -26,21 +26,20 @@ TEST(t_tut, sin_formula) {
 }
 
 
-TEST(t_tut, symbol_add) {
+TEST(op, symbol_add) {
     symbol a;
     double result = func1<0.3>();
 
 }
+// template <class U>
+//     requires std::is_convertible_v<U&&, requalify_as_const_t<remove_rvalue_reference_t<T>>>
 
+TEST(op, use_as_func) {
+    symbol a;
+    formula s = a+a;
+    function<double(double)> f = [&s, &a](double x){return s(a=std::move(x));};
 
-TEST(t_tut, use_as_func) {
-    symbol Q;
-    formula s = Q;
-    function<double(double)> f = [&s, &Q](const double x){return s(Q=0.3);};
-
-    cout<<f(3)<<endl;
-    // Eigen::MatrixXd m(2,2);
-    // using r = requalify_as_const_t<remove_rvalue_reference_t<decltype(m)>>;
-    // constexpr double m = 3.0;
-    // cout<<s(Q = Eigen::MatrixXd(1,2,1))<<endl;
+    double arg = 3.0;
+    std::cout<<f(arg)<<std::endl;
+    ASSERT_EQ(f(arg),2*3.0);
 }

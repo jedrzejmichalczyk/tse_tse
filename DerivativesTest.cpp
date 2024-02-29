@@ -9,7 +9,7 @@
 #include "t_tut.h"
 using namespace std;
 
-TEST(t_tut, symbol_a) {
+TEST(derivs, symbol_a) {
     symbol a;
     symbol b;
 
@@ -20,7 +20,7 @@ TEST(t_tut, symbol_a) {
 
 }
 
-TEST(t_tut, symbol_2a) {
+TEST(derivs, symbol_2a) {
     symbol a;
     symbol b;
 
@@ -31,7 +31,7 @@ TEST(t_tut, symbol_2a) {
 
 }
 
-TEST(t_tut, symbol_ab) {
+TEST(derivs, symbol_ab) {
     symbol a;
     symbol b;
 
@@ -43,7 +43,7 @@ TEST(t_tut, symbol_ab) {
 
 }
 
-TEST(t_tut, symbol_bdiva) {
+TEST(derivs, symbol_bdiva) {
     symbol a;
     symbol b;
 
@@ -55,7 +55,7 @@ TEST(t_tut, symbol_bdiva) {
 
 }
 
-TEST(t_tut, symbol_power) {
+TEST(derivs, symbol_power) {
     symbol a;
     symbol b;
     constant_symbol<0.3> c;
