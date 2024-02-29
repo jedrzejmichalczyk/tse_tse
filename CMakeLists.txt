@@ -3,7 +3,7 @@ project(tse_tse)
 
 set(CMAKE_CXX_STANDARD 26)
 
-
+include_directories("c:/git/eigen")
 add_executable(tse_tse main.cpp t_tut.h)
 
 

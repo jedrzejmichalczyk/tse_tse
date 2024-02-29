@@ -5,47 +5,23 @@
 #include <chrono>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <valarray>
+#include <cmath>
 #include "t_tut.h"
+
 using namespace std;
 
 TEST(t_tut, binary) {
     std::cout<<binary<101010>::value<<endl;
 }
 
-TEST(t_tut, symbol_id) {
+TEST(t_tut, sin_formula) {
     symbol a;
     symbol b;
     symbol c;
     formula f = a*sin(b + c);
 
-    auto t0= std::chrono::high_resolution_clock::now();
-
-    double sum = 0;
-    for(int i=0; i<10000000; i++) {
-        sum+=  f(a = 3,b=2,c=0.3*i);
-    }
-
-    auto tk= std::chrono::high_resolution_clock::now();
-
-    std::cout<<chrono::duration_cast<chrono::milliseconds>(tk-t0)<<endl;
-    std::cout<<sum<<endl;
-
-    t0= std::chrono::high_resolution_clock::now();
-    double a_d =3.0;
-    double b_d = 2.0;
-    double c_d = 0.3;
-    sum = 0;
-    for(int i=0; i<10000000; i++) {
-        sum += a_d*sin(b_d + c_d*i);
-    }
-
-    tk= std::chrono::high_resolution_clock::now();
-
-    std::cout<<chrono::duration_cast<chrono::milliseconds>(tk-t0)<<endl;
-    std::cout<<sum<<endl;
-
-
+    std::cout<<f(a=1,b=0,c=0.5*numbers::pi)<<std::endl;
+    GTEST_ASSERT_EQ(f(a=1,b=0,c=0.5*numbers::pi),1.0);
 
 }
 
@@ -57,3 +33,14 @@ TEST(t_tut, symbol_add) {
 }
 
 
+TEST(t_tut, use_as_func) {
+    symbol Q;
+    formula s = Q;
+    function<double(double)> f = [&s, &Q](const double x){return s(Q=0.3);};
+
+    cout<<f(3)<<endl;
+    // Eigen::MatrixXd m(2,2);
+    // using r = requalify_as_const_t<remove_rvalue_reference_t<decltype(m)>>;
+    // constexpr double m = 3.0;
+    // cout<<s(Q = Eigen::MatrixXd(1,2,1))<<endl;
+}

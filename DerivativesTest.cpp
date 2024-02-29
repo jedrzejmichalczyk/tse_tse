@@ -4,7 +4,8 @@
 
 #include <gtest/gtest.h>
 #include <iostream>
-#include <valarray>
+#include <Eigen/Dense>
+
 #include "t_tut.h"
 using namespace std;
 
